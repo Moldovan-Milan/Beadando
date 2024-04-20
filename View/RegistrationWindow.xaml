@@ -1,0 +1,39 @@
+﻿<Window x:Class="Beadando.View.RegistrationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Beadando.View"
+        mc:Ignorable="d"
+        Title="Regisztrálás" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Label Content="Regisztráció" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold"></Label>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Felhasználónév:"></Label>
+                <TextBox x:Name="username_box" Width="100"></TextBox>
+                <Label x:Name="user_name_error" Content="Már létezik a felhasználónév!" Foreground="#FFBD0606" Visibility="Collapsed"></Label>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 10 0 10">
+                <Label Content="Email:"></Label>
+                <TextBox x:Name="email_box" Margin="50 0 0 0" Width="100"></TextBox>
+                <Label x:Name="email_error" Content="Már létezik ez az email cím" Foreground="#FFBD0606" Visibility="Collapsed"></Label>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
+                <Label Content="Jelszó:"></Label>
+                <PasswordBox x:Name="password_box" Margin="50 0 0 0" Width="100"></PasswordBox>
+                <Label x:Name="password_length_error" Content="A jelszó túl rövid!" Foreground="#FFBD0606" Visibility="Collapsed"></Label>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
+                <Label Content="Jelszó újra:"></Label>
+                <PasswordBox x:Name="password_again_box" Margin="20 0 0 0" Width="100"></PasswordBox>
+                <Label x:Name="password_check_error" Content="Nem egyezik a két jelszó!" Foreground="#FFBD0606" Visibility="Collapsed"></Label>
+            </StackPanel>
+            <Button x:Name="registration_btn" Content="Regisztráció" Click="registration_btn_Click"></Button>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Ha már van fiókod:: "></Label>
+                <Label x:Name="login" Content="Regisztráció" Cursor="Hand" FontWeight="Bold" FontStyle="Italic" Foreground="#FF114AD6" MouseLeftButtonUp="login_MouseLeftButtonUp"></Label>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

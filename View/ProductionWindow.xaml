@@ -1,0 +1,22 @@
+﻿<Window x:Class="Beadando.View.ProductionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Beadando.View"
+        mc:Ignorable="d"
+        Title="ProductionWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen" Closed="Window_Closed">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="19*"/>
+            <RowDefinition Height="415*"/>
+        </Grid.RowDefinitions>
+        <Menu>
+            <MenuItem x:Name="logout_menu_btn" Header="Kijelenkezés" Click="logout_menu_btn_Click"></MenuItem>
+            <MenuItem Header="Szerkesztés">
+                <MenuItem Header="Új termék felvétele"></MenuItem>
+            </MenuItem>
+        </Menu>
+        <Frame x:Name="main_frame" Grid.Row="1"/>
+    </Grid>
+</Window>
