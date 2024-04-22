@@ -22,12 +22,16 @@ namespace Beadando.View
     /// </summary>
     public partial class ProductionWindow : Window
     {
-        MainPage mainPage;
-        CartRepository cartRepository;
+        private MainPage mainPage;
+        private CartPage cartPage;
+        private CartRepository cartRepository;
+
         public ProductionWindow()
         {
             InitializeComponent();
             MainPage mainPage = new MainPage();
+            cartPage = new CartPage();
+
             cartRepository = GlobalVariables.GetCartRepository();
             main_frame.Content = mainPage;
         }
@@ -72,6 +76,16 @@ namespace Beadando.View
             cartRepository.Save();
 
             
+        }
+
+        private void main_menu_btn_Click(object sender, RoutedEventArgs e)
+        {
+            main_frame.Content = mainPage;
+        }
+
+        private void cart_btn_Click(object sender, RoutedEventArgs e)
+        {
+            main_frame.Content = cartPage;
         }
     }
 }
