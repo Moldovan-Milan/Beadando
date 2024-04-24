@@ -22,11 +22,11 @@ namespace Beadando.View
     /// <summary>
     /// Interaction logic for ProductPage.xaml
     /// </summary>
-    public partial class MainPage : Page
+    public partial class ProductListPage : Page
     {
         private ProductRepository productRepository;
         private ViewModel viewModel;
-        public MainPage()
+        public ProductListPage()
         {
             InitializeComponent();
             viewModel = new ViewModel();

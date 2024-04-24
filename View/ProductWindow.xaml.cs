@@ -45,7 +45,9 @@ namespace Beadando.View
             if (MessageBox.Show("Hozzáadod ezt az elemet a kosárhoz?",
                 "Kosárhoz adás", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
-                GlobalVariables.AddCartElement(ViewModel.SelectedProduct.Id, 1);
+                //GlobalVariables.AddCartElement(ViewModel.SelectedProduct.Id, 1);
+                cartRepository.AddItemToCart(LoggedUser.GetUid(), ViewModel.SelectedProduct.Id, 1);
+                cartRepository.Save();
                 MessageBox.Show("A terméket hozzáadtuk a kosárhoz!");
             }
         }

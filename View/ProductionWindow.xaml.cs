@@ -22,18 +22,18 @@ namespace Beadando.View
     /// </summary>
     public partial class ProductionWindow : Window
     {
-        private MainPage mainPage;
+        private ProductListPage productListPage;
         private CartPage cartPage;
         private CartRepository cartRepository;
 
         public ProductionWindow()
         {
             InitializeComponent();
-            MainPage mainPage = new MainPage();
+            productListPage = new ProductListPage();
             cartPage = new CartPage();
 
             cartRepository = GlobalVariables.GetCartRepository();
-            main_frame.Content = mainPage;
+            main_frame.Content = productListPage;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -66,25 +66,26 @@ namespace Beadando.View
         // Save cart elements to database
         private void Window_Closed(object sender, EventArgs e)
         {
-            Dictionary<int, int> cartValues = GlobalVariables.GetLocalCartValues();
+            //Dictionary<int, int> cartValues = GlobalVariables.GetLocalCartValues();
 
-            foreach (var cart in cartValues)
-            {
-                cartRepository.AddItemToCart(LoggedUser.GetUid(),
-                    cart.Key, cart.Value);
-            }
-            cartRepository.Save();
+            //foreach (var cart in cartValues)
+            //{
+            //    cartRepository.AddItemToCart(LoggedUser.GetUid(),
+            //        cart.Key, cart.Value);
+            //}
+            //cartRepository.Save();
 
             
         }
 
         private void main_menu_btn_Click(object sender, RoutedEventArgs e)
         {
-            main_frame.Content = mainPage;
+            main_frame.Content = productListPage;
         }
 
         private void cart_btn_Click(object sender, RoutedEventArgs e)
         {
+            cartPage.LoadData();
             main_frame.Content = cartPage;
         }
     }

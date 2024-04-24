@@ -21,6 +21,10 @@ namespace Beadando.Data
 
         public DbSet<Cart> Cart { get; set; }
 
+        public DbSet<Order> Order { get; set; }
+
+        public DbSet<OrderElements> OrderElements { get; set; }
+
         public Context(string connectionString)
         {
             this.connString = connectionString;

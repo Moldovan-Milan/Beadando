@@ -34,6 +34,11 @@ namespace Beadando.Repository
                 .ToList().First().Id;
         }
 
+        public int GetPriceSum(int userId)
+        {
+            return GetByUserId(userId).Sum(p => p.Product.Price * p.Counts);
+        }
+
         // Megnézi, hogy van-e elmentve
         private bool IsExist(int userId, int productId) 
         {
@@ -50,7 +55,7 @@ namespace Beadando.Repository
 
         public void AddItemToCart(int userId, int productId, int count)
         {
-            // Ha van már ugyanilyen termék és a felhasználó elmentve, akkor
+            // Ha van már ugyanilyen termék és felhasználó elmentve, akkor
             // kikeresi és updateli a darabszámot
 
             if (!IsExist(userId, productId))
@@ -66,12 +71,25 @@ namespace Beadando.Repository
             {
                 UpdateCartItem(GetCartIdByUidAndProductId(userId, productId));
             }
-            
         }
 
-        public void UpdateCartItem(int cartId)
+        private void UpdateCartItem(int cartId)
         {
             context.Cart.Find(cartId).Counts += 1;
+        }
+
+        public void DeleteItemFromCart(int cartId)
+        {
+            context.Cart.Remove(context.Cart.Find(cartId));
+        }
+
+        public void ClearCartItems(int userId)
+        {
+            List<Cart> items = GetByUserId(userId);
+            foreach (Cart item in items)
+            {
+                context.Cart.Remove(item);
+            }
         }
 
         public void Save()

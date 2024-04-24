@@ -35,5 +35,6 @@ namespace Beadando.Model
         public virtual Category Category { get; set; }
         public virtual Images Img { get; set; }
         public virtual ICollection<Cart> Carts { get; set; }
+        public virtual ICollection<OrderElements> OrderElements { get; set; }
     }
 }

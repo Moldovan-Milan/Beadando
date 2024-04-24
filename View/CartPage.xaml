@@ -6,26 +6,52 @@
       xmlns:local="clr-namespace:Beadando.View"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="CartPage"
+      Title="Kosár"
       Background="White">
 
     <Grid>
-        <Label Content="Kosár" FontSize="40" VerticalAlignment="Top" HorizontalAlignment="Center"></Label>
-        <ScrollViewer>
-            <ListBox x:Name="item_list">
-                <ListBox.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <WrapPanel></WrapPanel>
-                    </ItemsPanelTemplate>
-                </ListBox.ItemsPanel>
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text=""></TextBlock>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="13*"/>
+        </Grid.RowDefinitions>
+        <Label Content="Kosár" FontSize="40" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <ScrollViewer Grid.Row="1">
+            <StackPanel Orientation="Vertical">
+                <ListBox x:Name="item_list" ItemsSource="{Binding CartItems}">
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center"></StackPanel>
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Product.Name}" Margin="0 0 5 0"></TextBlock>
+                                <Image Source="{Binding Product.Img.IMG}" Margin="0 0 5 0" Width="128" Height="128"></Image>
+                                <TextBlock Text="{Binding Counts}" Margin="0 0 5 0"> db</TextBlock>
+                                <TextBlock Text="{Binding Product.Price}"> Ft/db</TextBlock>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="95">
+                    <Grid Width="700">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="339*"/>
+                            <ColumnDefinition Width="361*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Orientation="Horizontal" Margin="30" VerticalAlignment="Center" Grid.Column="0" HorizontalAlignment="Right">
+                            <TextBlock x:Name="sum_price" Margin="5" FontSize="20" FontWeight="Bold"></TextBlock>
+                            <Button Content="Megrendelés" Click="Button_Click"></Button>
                         </StackPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+                        <StackPanel Orientation="Horizontal" Margin="30" VerticalAlignment="Center" Grid.Column="1" HorizontalAlignment="Left">
+                            <Button x:Name="delete_btn" Width="auto" Height="20" Content="Elem Törlése" Margin="0 0 10 0" Click="delete_btn_Click"></Button>
+                            <Button x:Name="clear_cart" Content="Kosár ürítése" Click="clear_cart_Click"></Button>
+                        </StackPanel>
+                        
+                    </Grid>
+                </StackPanel>
+            </StackPanel>
         </ScrollViewer>
     </Grid>
 </Page>

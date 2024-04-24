@@ -25,5 +25,6 @@ namespace Beadando.Model
         public string Password { get; set; }
 
         public virtual ICollection<Cart> Carts { get; set; }
+        public virtual ICollection<Order> Order { get; set; }
     }
 }

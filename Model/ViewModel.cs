@@ -10,6 +10,7 @@ namespace Beadando.Model
     {
         public IList<Images> Images { get; set; }
         public IList<Product> Products { get; set; }
+        public static IList<Cart> CartItems { get; set; }
 
         public static Product SelectedProduct { get; set; }
     }
