@@ -1,5 +1,6 @@
 ﻿using Beadando.Data;
 using Beadando.Model;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,7 @@ namespace Beadando.Repository
 
         public List<User> GetUsers()
         {
-            return context.Users.ToList();
+            return context.Users.Include(pe => pe.Permission).ToList();
         }
 
         public void AddUser(User user)
@@ -29,17 +30,20 @@ namespace Beadando.Repository
 
         public User GetUserByName(string name)
         {
-            return context.Users.Where(p => p.Username == name).ToList().First();
+            return context.Users.Where(p => p.Username == name).Include(pe => pe.Permission).ToList().First();
         }
 
         public bool GetUserNameExist(string username)
         {
             bool exists = false;
 
-            if (context.Users.Where(p => p.Username == username).ToList().Count > 0) 
+            try
             {
-                exists = true;
-            }
+                if (context.Users.Where(p => p.Username == username).ToList().Count > 0)
+                {
+                    exists = true;
+                }
+            } catch { }
 
             return exists;
         }
@@ -48,10 +52,13 @@ namespace Beadando.Repository
         {
             bool exists = false;
 
-            if (context.Users.Where(p => p.Email == email).ToList().Count > 0)
+            try
             {
-                exists = true;
-            }
+                if (context.Users.Where(p => p.Email == email).ToList().Count > 0)
+                {
+                    exists = true;
+                }
+            }catch { }
 
             return exists;
         }

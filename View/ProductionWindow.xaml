@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Beadando.View"
         mc:Ignorable="d"
-        Title="ProductionWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen" Closed="Window_Closed">
+        Title="ProductionWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="19*"/>
@@ -15,6 +15,9 @@
             <MenuItem x:Name="logout_menu_btn" Header="Kijelenkezés" Click="logout_menu_btn_Click"></MenuItem>
             <MenuItem x:Name="main_menu_btn" Header="Főmenü" Click="main_menu_btn_Click"></MenuItem>
             <MenuItem x:Name="cart_btn" Header="Kosár" Click="cart_btn_Click"></MenuItem>
+            <MenuItem x:Name="admin_btn" Header="Adminisztrátori műveletek" Visibility="Hidden">
+                <MenuItem x:Name="admin_product_list" Header="Termékek listája"></MenuItem>
+            </MenuItem>
         </Menu>
         <Frame x:Name="main_frame" Grid.Row="1"/>
     </Grid>

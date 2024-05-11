@@ -32,7 +32,7 @@
             <Button x:Name="registration_btn" Content="Regisztráció" Click="registration_btn_Click"></Button>
             <StackPanel Orientation="Horizontal">
                 <Label Content="Ha már van fiókod:: "></Label>
-                <Label x:Name="login" Content="Regisztráció" Cursor="Hand" FontWeight="Bold" FontStyle="Italic" Foreground="#FF114AD6" MouseLeftButtonUp="login_MouseLeftButtonUp"></Label>
+                <Label x:Name="login" Content="Bejelentkezés" Cursor="Hand" FontWeight="Bold" FontStyle="Italic" Foreground="#FF114AD6" MouseLeftButtonUp="login_MouseLeftButtonUp"></Label>
             </StackPanel>
         </StackPanel>
     </Grid>

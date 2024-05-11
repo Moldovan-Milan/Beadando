@@ -25,27 +25,82 @@ namespace Beadando.View
     public partial class ProductListPage : Page
     {
         private ProductRepository productRepository;
+        private CategoryRepository categoryRepository;
         private ViewModel viewModel;
         public ProductListPage()
         {
             InitializeComponent();
             viewModel = new ViewModel();
             productRepository = new ProductRepository(GlobalVariables.GetContext());
-
-            LoadProducts();
+            categoryRepository = new CategoryRepository(GlobalVariables.GetContext());
+            LoadCategory();
+            LoadProducts(0);
             this.DataContext = viewModel;
+
+            // Admin gombok
+            if (LoggedUser.GetPermission() == 1)
+            {
+                admin_check_p_btn.Visibility = Visibility.Visible;
+                admin_edit_p_btn.Visibility = Visibility.Visible;
+                admin_new_p_btn.Visibility = Visibility.Visible;
+            }
+
         }
 
-        private void LoadProducts()
+        private void LoadProducts(int categoryId)
         {
-            viewModel.Products = productRepository.GetProducts();
+            if (categoryId == 0)
+            {
+                viewModel.Products = productRepository.GetProducts();
+            }
+            else
+            {
+                viewModel.Products = productRepository.GetProductByCategoryId(categoryId);
+            }
             listBox.ItemsSource = viewModel.Products;
+
+        }
+
+        private void LoadCategory()
+        {
+            viewModel.Categories = categoryRepository.GetAll();
         }
 
         private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (LoggedUser.GetPermission() == 1)
+            {
+                
+            }
+            else
+            {
+                ProductWindow productWindow = new ProductWindow();
+                productWindow.ShowDialog();
+            }
+        }
+
+        private void category_list_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Category _category = (Category) category_list.SelectedItem;
+            LoadProducts(_category.Id);
+        }
+
+        private void admin_check_p_btn_Click(object sender, RoutedEventArgs e)
+        {
             ProductWindow productWindow = new ProductWindow();
             productWindow.ShowDialog();
+        }
+
+        private void admin_edit_p_btn_Click(object sender, RoutedEventArgs e)
+        {
+            AdminView.EditProductWindow editProductWindow = new AdminView.EditProductWindow(true);
+            editProductWindow.ShowDialog();
+        }
+
+        private void admin_new_p_btn_Click(object sender, RoutedEventArgs e)
+        {
+            AdminView.EditProductWindow editProductWindow = new AdminView.EditProductWindow();
+            editProductWindow.ShowDialog();
         }
     }
 }

@@ -32,25 +32,13 @@ namespace Beadando.View
             productListPage = new ProductListPage();
             cartPage = new CartPage();
 
+            // Admin gomb engedélyezése
+            if (LoggedUser.GetPermission() == 1) { admin_btn.Visibility = Visibility.Visible; }
+
             cartRepository = GlobalVariables.GetCartRepository();
             main_frame.Content = productListPage;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            //main_frame.Content = MainPage;
-            //MainPage.Visibility = Visibility.Visible;
-        }
-
-        private void Window_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            //if (MainPage.Visibility == Visibility.Collapsed)
-            //{
-            //    MessageBox.Show("collapsed");
-            //    productPage = new ProductPage();
-            //    main_frame.Content = productPage;
-            //}
-        }
 
         private void logout_menu_btn_Click(object sender, RoutedEventArgs e)
         {
@@ -61,21 +49,6 @@ namespace Beadando.View
                 mainWindow.Show();
                 this.Close();
             }
-        }
-
-        // Save cart elements to database
-        private void Window_Closed(object sender, EventArgs e)
-        {
-            //Dictionary<int, int> cartValues = GlobalVariables.GetLocalCartValues();
-
-            //foreach (var cart in cartValues)
-            //{
-            //    cartRepository.AddItemToCart(LoggedUser.GetUid(),
-            //        cart.Key, cart.Value);
-            //}
-            //cartRepository.Save();
-
-            
         }
 
         private void main_menu_btn_Click(object sender, RoutedEventArgs e)

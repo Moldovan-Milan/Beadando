@@ -6,10 +6,23 @@
       xmlns:local="clr-namespace:Beadando.View"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="ProductPage">
+      Title="ProductPage"
+      Background="White">
 
     <Grid>
-        <ListBox x:Name="listBox" SelectedItem="{Binding SelectedProduct}" VerticalAlignment="Center" HorizontalAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="listBox_SelectionChanged">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="33*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0" Orientation="Vertical">
+            <Label Content="Kategóriák: " VerticalAlignment="Center" HorizontalAlignment="Center"></Label>
+            <ComboBox x:Name="category_list" Margin="10" ItemsSource="{Binding Categories}" DisplayMemberPath="Name" SelectedValuePath="Id" SelectionChanged="category_list_SelectionChanged"></ComboBox>
+            <Button x:Name="admin_check_p_btn" Click="admin_check_p_btn_Click" Content="Termék megtekintése" Visibility="Hidden"></Button>
+            <Button x:Name="admin_edit_p_btn" Click="admin_edit_p_btn_Click" Content="Termék szerkesztése" Visibility="Hidden"></Button>
+            <Button x:Name="admin_new_p_btn" Click="admin_new_p_btn_Click" Content="Új termék" Visibility="Hidden"></Button>
+
+        </StackPanel>
+        <ListBox x:Name="listBox" Margin="0,30,0,0" SelectedItem="{Binding SelectedProduct}" VerticalAlignment="Top" HorizontalAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="listBox_SelectionChanged" Grid.Column="1">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel></WrapPanel>

@@ -19,6 +19,8 @@ namespace Beadando.Data
 
         public DbSet<User> Users { get; set; }
 
+        public DbSet<Permission> Permissions { get; set; }
+
         public DbSet<Cart> Cart { get; set; }
 
         public DbSet<Order> Order { get; set; }

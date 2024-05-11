@@ -24,6 +24,11 @@ namespace Beadando.Model
         [Column("password")]
         public string Password { get; set; }
 
+        [Column("permission_id")]
+        public int PermissionId { get; set; }
+
+        public virtual Permission Permission { get; set; }
+
         public virtual ICollection<Cart> Carts { get; set; }
         public virtual ICollection<Order> Order { get; set; }
     }

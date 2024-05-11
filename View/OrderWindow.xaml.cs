@@ -98,10 +98,11 @@ namespace Beadando.View
 
         private string GenerateOrderId()
         {
-            string id = DateTime.Now.ToString().Replace('.', '-').Replace(':', '_').Trim();
+            string id = DateTime.Now.ToString().Replace('.', '-').Replace(':', '_');
             id += "-" + LoggedUser.GetUid();
+            MessageBox.Show(id.Trim());
 
-            return id;
+            return id.Trim();
         }
     }
 }

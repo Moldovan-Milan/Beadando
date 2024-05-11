@@ -1,4 +1,5 @@
 ﻿using Beadando.Data;
+using Beadando.Model;
 using Beadando.Repository;
 using System;
 using System.Collections.Generic;
@@ -107,10 +108,12 @@ namespace Beadando.View
 
         private void RegistrateUser()
         {
-            repository.AddUser(new Model.User {
+            repository.AddUser(new User {
                 Username = username_box.Text,
                 Email = email_box.Text,
-                Password = Functions.EncryptionHelper.Encrypt(password_box.Password)
+                Password = Functions.EncryptionHelper.Encrypt(password_box.Password),
+                PermissionId = 2
+                
             });
             repository.Save();
             repository.Dispose();

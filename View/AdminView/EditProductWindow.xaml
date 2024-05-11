@@ -1,0 +1,46 @@
+﻿<Window x:Class="Beadando.View.AdminView.EditProductWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Beadando.View.AdminView"
+        mc:Ignorable="d"
+        Title="EditProductWindow" Height="450" Width="800"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="39*"/>
+            <RowDefinition Height="395*"/>
+        </Grid.RowDefinitions>
+        <Label HorizontalAlignment="Center" FontSize="20" Grid.Row="0" VerticalAlignment="Center" x:Name="title"></Label>
+        <ScrollViewer Grid.Row="1">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" >
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                    <Label Content="Termék neve:"></Label>
+                    <TextBox x:Name="product_name" Width="100" ></TextBox>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                    <Label Content="Termék ára:"></Label>
+                    <TextBox x:Name="product_price" Width="100" ></TextBox>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                    <Label Content="Termék kategória: "></Label>
+                    <ComboBox x:Name="category_combobox" Width="100" DisplayMemberPath="Name" SelectedValuePath="Id"></ComboBox>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                    <Label Content="Termék képe (hagyd üresen, ha nem akarod változtatni)"></Label>
+                    <Button x:Name="image_select_bnt" Click="image_select_bnt_Click" Content="Tallózás.."></Button>
+                </StackPanel>
+                <Image x:Name="selected_image"></Image>
+                <StackPanel Orientation="Vertical">
+                    <Label HorizontalAlignment="Center" Content="Termék leírása:"></Label>
+                    <RichTextBox x:Name="desc" Width="300" Height="200" ></RichTextBox>
+                </StackPanel>
+                <StackPanel Margin="10" HorizontalAlignment="Center" Orientation="Horizontal">
+                    <Button Margin="0 0 10 0" Content="Mentés" Click="Button_Click"></Button>
+                    <Button x:Name="cancel_btn" Click="cancel_btn_Click" Content="Mégse"></Button>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>

@@ -41,8 +41,22 @@ namespace Beadando.View
             item_list.ItemsSource = ViewModel.CartItems;
             this.DataContext = viewModel;
 
-            price = cartRepository.GetPriceSum(LoggedUser.GetUid());
-            sum_price.Text = $"Összesen: {price} Ft";
+            // Ha nincs termék, kiírja: a kosár üres...
+            if (ViewModel.CartItems.Count == 0)
+            {
+                cart_is_empty_label.Visibility = Visibility.Visible;
+                order_btns_st_panel.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                cart_is_empty_label.Visibility= Visibility.Collapsed;
+                order_btns_st_panel.Visibility= Visibility.Visible;
+
+                price = cartRepository.GetPriceSum(LoggedUser.GetUid());
+                sum_price.Text = $"Összesen: {price} Ft";
+            }
+
+            
         }
 
         private void delete_btn_Click(object sender, RoutedEventArgs e)

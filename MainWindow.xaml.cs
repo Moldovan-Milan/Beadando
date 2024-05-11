@@ -42,7 +42,7 @@ namespace Beadando
 
                 if (EncryptionHelper.Decrypt(user.Password) == password_box.Password)
                 {
-                    LoggedUser.Login(user.UID, user.Username, user.Email);
+                    LoggedUser.Login(user.UID, user.Username, user.Email, user.PermissionId);
                     ProductionWindow productionWindow = new ProductionWindow();
                     repository.Dispose();
                     productionWindow.Show();
