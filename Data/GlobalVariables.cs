@@ -14,10 +14,8 @@ namespace Beadando.Data
         private static readonly CartRepository cartRepository = new CartRepository(context);
         
         //private static Dictionary<int, int> LocalCartValues = new Dictionary<int, int>();
-        
         public static Context GetContext() { return context; }
         public static CartRepository GetCartRepository() { return cartRepository; }
-
         //public static Dictionary<int, int> GetLocalCartValues()
         //{
         //    return LocalCartValues;
