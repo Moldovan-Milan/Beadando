@@ -71,19 +71,9 @@ namespace Beadando.View.AdminView
                 selected_image.Width = 100;
                 selected_image.Height = 100;
                 selected_image.Source = new BitmapImage(new Uri(op.FileName));
-                imageBytes = getJPGFromImageControl(selected_image.Source as BitmapImage);
+                //imageBytes = File.ReadAllBytes(op.FileName);
             }
             MessageBox.Show(imageFileName);
-        }
-
-        // Forrás: https://stackoverflow.com/questions/553611/wpf-image-to-byte
-        public byte[] getJPGFromImageControl(BitmapImage imageC)
-        {
-            MemoryStream memStream = new MemoryStream();
-            JpegBitmapEncoder encoder = new JpegBitmapEncoder();
-            encoder.Frames.Add(BitmapFrame.Create(imageC));
-            encoder.Save(memStream);
-            return memStream.ToArray();
         }
 
         private void cancel_btn_Click(object sender, RoutedEventArgs e)
@@ -96,7 +86,7 @@ namespace Beadando.View.AdminView
             if (!editMode && category_combobox.SelectedIndex != -1 && imageFileName != string.Empty)
             {
                 // Kép mentése
-                imageRepository.AddImage(imageBytes, product_name.Text.ToLower());
+                imageRepository.AddImage(File.ReadAllBytes(imageFileName), product_name.Text.ToLower());
                 imageRepository.Save();
 
 

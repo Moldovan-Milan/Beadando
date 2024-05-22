@@ -26,36 +26,40 @@ namespace Beadando
     /// </summary>
     public partial class MainWindow : Window
     {
-        UserRepository repository;
+        private enum LoginResults
+        {
+            UnkownError = -1,
+            Success = 0,
+            UsernameNotFound = 1,
+            PasswordNotCorrect = 2
+        }
 
         public MainWindow()
         {
             InitializeComponent();
-            repository = new UserRepository(GlobalVariables.GetContext());
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                User user = repository.GetUserByName(username_box.Text);
+            LoginResults result = (LoginResults)Auth.Login(username_box.Text, password_box.Password);
 
-                if (EncryptionHelper.Decrypt(user.Password) == password_box.Password)
-                {
-                    LoggedUser.Login(user.UID, user.Username, user.Email, user.PermissionId);
-                    ProductionWindow productionWindow = new ProductionWindow();
-                    repository.Dispose();
-                    productionWindow.Show();
-                    this.Close();
-                }
-            }
-            catch (InvalidOperationException)
+            if (result == LoginResults.Success)
             {
-                MessageBox.Show("Minden mezőt ki kell tölteni!\n Vagy nem megfelő a felhasználónév vagy a jelszó!");
+                ProductionWindow productionWindow = new ProductionWindow();
+                productionWindow.Show();
+                this.Close();
             }
-            catch (Exception ex)
+            else if (result == LoginResults.UsernameNotFound)
             {
-                MessageBox.Show(ex.Message, "Error");
+                MessageBox.Show("Hibás a felhasználónév!");
+            }
+            else if (result == LoginResults.PasswordNotCorrect)
+            {
+                MessageBox.Show("Hibás a jelszó!");
+            }
+            else if (result == LoginResults.UnkownError)
+            {
+                MessageBox.Show("Sikertelen bejelentkezés ismeretlen hiba miatt!");
             }
             
         }

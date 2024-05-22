@@ -49,16 +49,19 @@ namespace Beadando.View
 
         private void LoadProducts(int categoryId)
         {
-            if (categoryId == 0)
+            try
             {
-                viewModel.Products = productRepository.GetProducts();
+                if (categoryId == 0)
+                {
+                    viewModel.Products = productRepository.GetProducts();
+                }
+                else
+                {
+                    viewModel.Products = productRepository.GetProductByCategoryId(categoryId);
+                }
+                listBox.ItemsSource = viewModel.Products;
             }
-            else
-            {
-                viewModel.Products = productRepository.GetProductByCategoryId(categoryId);
-            }
-            listBox.ItemsSource = viewModel.Products;
-
+            catch { }
         }
 
         private void LoadCategory()

@@ -35,9 +35,10 @@ namespace Beadando.Repository
                 Caption = caption,
                 IMG = imageByte
             });
+            MessageBox.Show(imageByte.Length.ToString());
         }
 
-        public void Save() 
+        public void Save()
         {
             context.SaveChanges();
         }

@@ -1,6 +1,7 @@
 ﻿using Beadando.Data;
 using Beadando.Model;
 using Beadando.Repository;
+using Beadando.Functions;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -23,11 +24,19 @@ namespace Beadando.View
     /// </summary>
     public partial class RegistrationWindow : Window
     {
-        UserRepository repository;
+        private enum RegistrationResults
+        {
+            Failed = -1,
+            Succes = 0,
+            UsernameAlreadyExist = 1,
+            EmailAlreadyExist = 2,
+            PasswordLenghtToSmall = 3,
+            PasswordsNotMacthes = 4,
+        }
+
         public RegistrationWindow()
         {
             InitializeComponent();
-            repository = new UserRepository(GlobalVariables.GetContext());
         }
 
         private void login_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -37,92 +46,37 @@ namespace Beadando.View
             this.Close();
         }
 
+        private void SetPageToDefault()
+        {
+            user_name_error.Visibility = Visibility.Collapsed;
+            email_error.Visibility = Visibility.Collapsed;
+            password_length_error.Visibility = Visibility.Collapsed;
+            password_length_error.Visibility = Visibility.Collapsed;
+        }
+
         private void registration_btn_Click(object sender, RoutedEventArgs e)
         {
-            if (CheckDatas())
+            SetPageToDefault();
+            RegistrationResults result = (RegistrationResults)Auth.Registrate(username_box.Text, email_box.Text,
+                password_box.Password, password_again_box.Password);
+
+            if (result == RegistrationResults.Succes)
             {
-                bool usernameCheck = false;
-                bool emialCheck = false;
-                bool passwordLengthCheck = false;
-                bool passwordCheck = false;
-
-                // Check username
-                if (repository.GetUserNameExist(username_box.Text))
-                {
-                    user_name_error.Visibility = Visibility.Visible;
-                }
-                else
-                {
-                    usernameCheck = true;
-                    user_name_error.Visibility = Visibility.Collapsed;
-                }
-
-                // Check email
-                if (repository.GetEmailExist(email_box.Text))
-                {
-                    email_error.Visibility = Visibility.Visible;
-                }
-                else
-                {
-                    emialCheck = true;
-                    email_error.Visibility = Visibility.Collapsed;
-                }
-                
-                // Check password length
-                if (password_box.Password.Length < 3)
-                {
-                    password_length_error.Visibility = Visibility.Visible;
-                } 
-                else { password_length_error.Visibility = Visibility.Collapsed; passwordLengthCheck = true; }
-
-                // Check password again box
-                if (password_box.Password != password_again_box.Password)
-                {
-                    password_check_error.Visibility = Visibility.Visible;
-                }
-                else { password_check_error.Visibility = Visibility.Collapsed; passwordCheck = true; }
-
-                // Registrate User
-                if (usernameCheck && emialCheck && passwordLengthCheck && passwordCheck) 
-                {
-                    RegistrateUser();
-                }
-
+                MessageBox.Show("Regisztráció kész");
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.Show();
+                this.Close();
             }
-            else { MessageBox.Show("Minden adatot ki kell tölteni!"); }
-
-            
-        }
-
-        private bool CheckDatas()
-        {
-            bool result = false;
-            if (username_box.Text.Length > 0 && email_box.Text.Length > 0 
-                && password_box.Password.Length > 0 && password_again_box.Password.Length > 0)
-            {
-                result = true;
-            }
-
-            return result;
-        }
-
-        private void RegistrateUser()
-        {
-            repository.AddUser(new User {
-                Username = username_box.Text,
-                Email = email_box.Text,
-                Password = Functions.EncryptionHelper.Encrypt(password_box.Password),
-                PermissionId = 2
-                
-            });
-            repository.Save();
-            repository.Dispose();
-
-            MessageBox.Show("Regisztráció kész");
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
-            repository.Dispose();
-            this.Close();
+            else if (result == RegistrationResults.UsernameAlreadyExist)
+                { user_name_error.Visibility = Visibility.Visible; }
+            else if (result == RegistrationResults.EmailAlreadyExist)
+                { email_error.Visibility = Visibility.Visible; }
+            else if (result == RegistrationResults.PasswordLenghtToSmall) 
+                { password_length_error.Visibility = Visibility.Visible; }
+            else if (result == RegistrationResults.PasswordsNotMacthes) 
+                { password_check_error.Visibility = Visibility.Visible; }
+            else if (result == RegistrationResults.Failed) 
+                { MessageBox.Show("Sikertelen regisztráció!"); }
         }
     }
 
