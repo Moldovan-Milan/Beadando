@@ -28,13 +28,13 @@
                 <ListBox Style="{StaticResource opinion_listbox_style}" x:Name="rating">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Vertical" Width="100" Height="200">
                                 <Label Style="{StaticResource username_style}" Content="{Binding User.Username}"></Label>
                                 <StackPanel Style="{StaticResource star_stackpanel_style}">
                                     <Label Style="{StaticResource username_style}" Content="{Binding  RateValue}"></Label>
                                     <Label Style="{StaticResource star_label_style}" Content="⭐"></Label>
                                 </StackPanel>
-                                <TextBlock Text="{Binding OpinionText}"></TextBlock>
+                                <TextBlock Text="{Binding OpinionText}" Width="auto" Height="auto"></TextBlock>
                             </StackPanel>
                         </DataTemplate>
                     </ListBox.ItemTemplate>

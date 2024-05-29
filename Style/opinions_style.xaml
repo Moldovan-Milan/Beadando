@@ -2,7 +2,8 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <Style x:Key="opinion_listbox_style" TargetType="ListBox">
-        <Setter Property="Width" Value="200"></Setter>
+        <Setter Property="Width" Value="300"></Setter>
+        <Setter Property="Margin" Value="0 30 0 0"></Setter>
         <Setter Property="VerticalAlignment" Value="Center"></Setter>
         <Setter Property="HorizontalAlignment" Value="Center"></Setter>
         <Setter Property="BorderBrush" Value="White"></Setter>

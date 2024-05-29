@@ -1,4 +1,5 @@
 ﻿using Beadando.Data;
+using Beadando.Model;
 using System.Windows;
 
 namespace Beadando.View
@@ -28,6 +29,7 @@ namespace Beadando.View
             if (MessageBox.Show("Biztos kijelentkezel?", "Kijelentkezés", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
                 LoggedUser.Logout();
+                ViewModel.SelectedProduct = null;
                 MainWindow mainWindow = new MainWindow();
                 mainWindow.Show();
                 this.Close();
