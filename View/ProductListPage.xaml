@@ -17,8 +17,8 @@
         <StackPanel Grid.Column="0" Orientation="Vertical">
             <Label Content="Kategóriák: " VerticalAlignment="Center" HorizontalAlignment="Center"></Label>
             <ComboBox x:Name="category_list" Margin="10" ItemsSource="{Binding Categories}" DisplayMemberPath="Name" SelectedValuePath="Id" SelectionChanged="category_list_SelectionChanged"></ComboBox>
-            <Button x:Name="admin_check_p_btn" Click="admin_check_p_btn_Click" Content="Termék megtekintése" Visibility="Hidden"></Button>
-            <Button x:Name="admin_edit_p_btn" Click="admin_edit_p_btn_Click" Content="Termék szerkesztése" Visibility="Hidden"></Button>
+            <Button x:Name="admin_check_p_btn" Click="admin_check_p_btn_Click" IsEnabled="False" Content="Termék megtekintése" Visibility="Hidden"></Button>
+            <Button x:Name="admin_edit_p_btn" Click="admin_edit_p_btn_Click" IsEnabled="False" Content="Termék szerkesztése" Visibility="Hidden"></Button>
             <Button x:Name="admin_new_p_btn" Click="admin_new_p_btn_Click" Content="Új termék" Visibility="Hidden"></Button>
 
         </StackPanel>
@@ -31,7 +31,7 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Vertical" Width="128">
-                        <TextBlock Text="{Binding Name}" FontSize="15"></TextBlock>
+                        <TextBlock Text="{Binding Name}"></TextBlock>
                         <Image Source="{Binding Img.IMG}" Width="128" Height="128" Stretch="Fill"></Image>
                         <TextBlock Text="{Binding Price}" FontSize="15"> Ft</TextBlock>
                     </StackPanel>

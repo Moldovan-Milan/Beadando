@@ -1,12 +1,7 @@
-﻿using Beadando.Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Beadando.Data;
+﻿using Beadando.Data;
 using Beadando.Model;
-using System.Windows.Controls;
+using Beadando.Repository;
+using System;
 
 namespace Beadando.Functions
 {
@@ -68,9 +63,9 @@ namespace Beadando.Functions
             {
                 // Megnézi, hogy a felhasználó vagy az email már megvan-e adva
                 if (userRepository.GetUserNameExist(username))
-                    { return RegistrationResults.UsernameAlreadyExist; }
+                { return RegistrationResults.UsernameAlreadyExist; }
                 if (userRepository.GetEmailExist(email))
-                    { return RegistrationResults.EmailAlreadyExist; }
+                { return RegistrationResults.EmailAlreadyExist; }
 
                 // Jelszó ellenőrzése
                 if (password.Length < 3) { return RegistrationResults.PasswordLenghtToSmall; }

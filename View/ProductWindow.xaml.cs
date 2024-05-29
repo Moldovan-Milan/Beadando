@@ -1,20 +1,8 @@
 ﻿using Beadando.Data;
 using Beadando.Model;
-using Beadando.Repository;
-using System;
 using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Beadando.View
 {
@@ -23,20 +11,31 @@ namespace Beadando.View
     /// </summary>
     public partial class ProductWindow : Window
     {
-        private CartRepository cartRepository;
+        List<Opinion> opinions;
 
         public ProductWindow()
         {
             InitializeComponent();
-            cartRepository = new CartRepository(GlobalVariables.GetContext());
             this.DataContext = ViewModel.SelectedProduct;
             price_block.Text = "Ár: " + ViewModel.SelectedProduct.Price + " Ft";
-
+            avarge_rating.Content = "Átlagos értékelés: " + GlobalVariables.GetOpinionRepository().
+                                    GetAvargeProductRate(ViewModel.SelectedProduct.Id);
+            LoadProductRating();
             if (!LoggedUser.IsLogged())
             {
                 add_to_cart.Visibility = Visibility.Collapsed;
                 login_text.Visibility = Visibility.Visible;
             }
+        }
+
+        private void LoadProductRating()
+        {
+            this.opinions = GlobalVariables.GetOpinionRepository().GetOpinionByProductId(ViewModel.SelectedProduct.Id);
+            if (this.opinions.Count == 0)
+            {
+                no_opinions.Visibility = Visibility.Visible;
+            }
+            rating.ItemsSource = this.opinions;
         }
 
         // Add item to the cart
@@ -46,8 +45,8 @@ namespace Beadando.View
                 "Kosárhoz adás", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
                 //GlobalVariables.AddCartElement(ViewModel.SelectedProduct.Id, 1);
-                cartRepository.AddItemToCart(LoggedUser.GetUid(), ViewModel.SelectedProduct.Id, 1);
-                cartRepository.Save();
+                GlobalVariables.GetCartRepository().AddItemToCart(LoggedUser.GetUid(), ViewModel.SelectedProduct.Id, 1);
+                GlobalVariables.GetCartRepository().Save();
                 MessageBox.Show("A terméket hozzáadtuk a kosárhoz!");
             }
         }

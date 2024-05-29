@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Beadando.Data
 {
@@ -32,12 +28,12 @@ namespace Beadando.Data
         }
 
         public static int GetUid() { return uid; }
-        public static string GetUserName() { return userName;}
-        public static string GetEmail() { return email;}
+        public static string GetUserName() { return userName; }
+        public static string GetEmail() { return email; }
 
-        public static int GetPermission() { return permission;}
+        public static int GetPermission() { return permission; }
 
-        public static bool IsLogged() {  return isLogged;}
+        public static bool IsLogged() { return isLogged; }
 
         public static void Logout()
         {

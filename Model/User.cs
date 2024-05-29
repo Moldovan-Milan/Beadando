@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Beadando.Model
 {
     [Table("users")]
-    internal class User
+    public class User
     {
         [Key]
         [Column("uid")]
@@ -31,5 +27,6 @@ namespace Beadando.Model
 
         public virtual ICollection<Cart> Carts { get; set; }
         public virtual ICollection<Order> Order { get; set; }
+        public virtual ICollection<Opinion> Opinion { get; set; }
     }
 }

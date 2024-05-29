@@ -1,11 +1,8 @@
 ﻿using Beadando.Data;
 using Beadando.Model;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Beadando.Repository
 {
@@ -40,7 +37,7 @@ namespace Beadando.Repository
         }
 
         // Megnézi, hogy van-e elmentve
-        private bool IsExist(int userId, int productId) 
+        private bool IsExist(int userId, int productId)
         {
             bool result = false;
 

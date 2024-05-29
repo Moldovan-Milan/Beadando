@@ -1,21 +1,6 @@
-﻿using Beadando.Data;
-using Beadando.Model;
-using Beadando.Repository;
-using Beadando.Functions;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Beadando.Functions;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Beadando.View
 {
@@ -68,15 +53,15 @@ namespace Beadando.View
                 this.Close();
             }
             else if (result == RegistrationResults.UsernameAlreadyExist)
-                { user_name_error.Visibility = Visibility.Visible; }
+            { user_name_error.Visibility = Visibility.Visible; }
             else if (result == RegistrationResults.EmailAlreadyExist)
-                { email_error.Visibility = Visibility.Visible; }
-            else if (result == RegistrationResults.PasswordLenghtToSmall) 
-                { password_length_error.Visibility = Visibility.Visible; }
-            else if (result == RegistrationResults.PasswordsNotMacthes) 
-                { password_check_error.Visibility = Visibility.Visible; }
-            else if (result == RegistrationResults.Failed) 
-                { MessageBox.Show("Sikertelen regisztráció!"); }
+            { email_error.Visibility = Visibility.Visible; }
+            else if (result == RegistrationResults.PasswordLenghtToSmall)
+            { password_length_error.Visibility = Visibility.Visible; }
+            else if (result == RegistrationResults.PasswordsNotMacthes)
+            { password_check_error.Visibility = Visibility.Visible; }
+            else if (result == RegistrationResults.Failed)
+            { MessageBox.Show("Sikertelen regisztráció!"); }
         }
     }
 

@@ -4,8 +4,6 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Beadando.Repository
 {
@@ -43,7 +41,8 @@ namespace Beadando.Repository
                 {
                     exists = true;
                 }
-            } catch { }
+            }
+            catch { }
 
             return exists;
         }
@@ -58,7 +57,8 @@ namespace Beadando.Repository
                 {
                     exists = true;
                 }
-            }catch { }
+            }
+            catch { }
 
             return exists;
         }

@@ -1,0 +1,28 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style x:Key="opinion_listbox_style" TargetType="ListBox">
+        <Setter Property="Width" Value="200"></Setter>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+        <Setter Property="BorderBrush" Value="White"></Setter>
+    </Style>
+    
+    <Style x:Key="username_style" TargetType="Label">
+        <Setter Property="FontSize" Value="15"></Setter>
+        <Setter Property="FontWeight" Value="Bold"></Setter>
+    </Style>
+
+    <Style x:Key="star_stackpanel_style" TargetType="StackPanel">
+        <Setter Property="Orientation" Value="Horizontal"></Setter>
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+        <Setter Property="Margin" Value="0 5 0 5"></Setter>
+    </Style>
+
+    <Style x:Key="star_label_style" TargetType="Label">
+        <Setter Property="Foreground" Value="#FFDFD22B"></Setter>
+        <Setter Property="FontSize" Value="20"></Setter>
+        <Setter Property="FontWeight" Value="Bold"></Setter>
+    </Style>
+</ResourceDictionary>

@@ -1,20 +1,8 @@
 ﻿using Beadando.Data;
 using Beadando.Model;
 using Beadando.Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Beadando.View
 {
@@ -25,7 +13,7 @@ namespace Beadando.View
     {
         private CartRepository cartRepository;
         private ViewModel viewModel;
-        private int price = 0; 
+        private int price = 0;
 
         public CartPage()
         {
@@ -49,14 +37,14 @@ namespace Beadando.View
             }
             else
             {
-                cart_is_empty_label.Visibility= Visibility.Collapsed;
-                order_btns_st_panel.Visibility= Visibility.Visible;
+                cart_is_empty_label.Visibility = Visibility.Collapsed;
+                order_btns_st_panel.Visibility = Visibility.Visible;
 
                 price = cartRepository.GetPriceSum(LoggedUser.GetUid());
                 sum_price.Text = $"Összesen: {price} Ft";
             }
 
-            
+
         }
 
         private void delete_btn_Click(object sender, RoutedEventArgs e)
@@ -75,7 +63,7 @@ namespace Beadando.View
             {
                 MessageBox.Show("Nincs kiválasztott elem!");
             }
-            
+
         }
 
         private void clear_cart_Click(object sender, RoutedEventArgs e)

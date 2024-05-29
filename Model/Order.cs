@@ -2,14 +2,11 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Beadando.Model
 {
     [Table("orders")]
-    class Order
+    public class Order
     {
         [Key]
         [Column("id")]
@@ -44,7 +41,7 @@ namespace Beadando.Model
         public int Uid { get; set; }
 
         public virtual User User { get; set; }
-        
+
         public ICollection<OrderElements> OrderElements { get; set; }
     }
 }

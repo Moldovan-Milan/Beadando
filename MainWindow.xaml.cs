@@ -1,23 +1,9 @@
 ﻿using Beadando.Data;
 using Beadando.Functions;
-using Beadando.Model;
-using Beadando.Repository;
 using Beadando.View;
 using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Beadando
 {
@@ -37,6 +23,11 @@ namespace Beadando
         public MainWindow()
         {
             InitializeComponent();
+            if (!GlobalVariables.GetContext().Database.CanConnect())
+            {
+                MessageBox.Show("Nem lehet kapcsolódni az adatbázishoz!");
+                Environment.Exit(-1);
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -61,7 +52,7 @@ namespace Beadando
             {
                 MessageBox.Show("Sikertelen bejelentkezés ismeretlen hiba miatt!");
             }
-            
+
         }
 
         private void registration_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)

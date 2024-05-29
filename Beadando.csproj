@@ -21,4 +21,8 @@
     <Resource Include="View\cart.png" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Themes\" />
+  </ItemGroup>
+
 </Project>

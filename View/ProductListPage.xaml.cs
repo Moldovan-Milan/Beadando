@@ -1,21 +1,7 @@
 ﻿using Beadando.Data;
 using Beadando.Model;
-using Beadando.Repository;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Beadando.View
 {
@@ -24,15 +10,11 @@ namespace Beadando.View
     /// </summary>
     public partial class ProductListPage : Page
     {
-        private ProductRepository productRepository;
-        private CategoryRepository categoryRepository;
         private ViewModel viewModel;
         public ProductListPage()
         {
             InitializeComponent();
             viewModel = new ViewModel();
-            productRepository = new ProductRepository(GlobalVariables.GetContext());
-            categoryRepository = new CategoryRepository(GlobalVariables.GetContext());
             LoadCategory();
             LoadProducts(0);
             this.DataContext = viewModel;
@@ -53,11 +35,11 @@ namespace Beadando.View
             {
                 if (categoryId == 0)
                 {
-                    viewModel.Products = productRepository.GetProducts();
+                    viewModel.Products = GlobalVariables.GetProductRepository().GetProducts();
                 }
                 else
                 {
-                    viewModel.Products = productRepository.GetProductByCategoryId(categoryId);
+                    viewModel.Products = GlobalVariables.GetProductRepository().GetProductByCategoryId(categoryId);
                 }
                 listBox.ItemsSource = viewModel.Products;
             }
@@ -66,25 +48,36 @@ namespace Beadando.View
 
         private void LoadCategory()
         {
-            viewModel.Categories = categoryRepository.GetAll();
+            viewModel.Categories = GlobalVariables.GetCategoryRepository().GetAll();
         }
 
         private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (LoggedUser.GetPermission() == 1)
-            {
-                
-            }
-            else
+            if (LoggedUser.GetPermission() != 1)
             {
                 ProductWindow productWindow = new ProductWindow();
                 productWindow.ShowDialog();
             }
+            else
+            {
+                if (listBox.SelectedIndex != -1)
+                {
+                    admin_check_p_btn.IsEnabled = true;
+                    admin_edit_p_btn.IsEnabled = true;
+                }
+                else if (listBox.SelectedIndex == -1)
+                {
+                    admin_check_p_btn.IsEnabled = false;
+                    admin_edit_p_btn.IsEnabled = false;
+                }
+            }
+
+
         }
 
         private void category_list_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Category _category = (Category) category_list.SelectedItem;
+            Category _category = (Category)category_list.SelectedItem;
             LoadProducts(_category.Id);
         }
 

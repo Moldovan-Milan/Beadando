@@ -3,25 +3,29 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Beadando.Model
 {
-    [Table("order_elements")]
-    public class OrderElements
+    [Table("opinions")]
+    public class Opinion
     {
         [Key]
         [Column("id")]
         public int Id { get; set; }
 
-        [ForeignKey("Order")]
-        [Column("order_id")]
-        public string OrderId { get; set; }
+        [Column("rate_value")]
+        public int RateValue { get; set; }
+
+        [Column("opinion_text")]
+        public string OpinionText { get; set; }
 
         [ForeignKey("Product")]
         [Column("product_id")]
         public int ProductId { get; set; }
 
-        [Column("counts")]
-        public int Counts { get; set; }
+        [ForeignKey("User")]
+        [Column("user_id")]
+        public int UserId { get; set; }
 
-        public virtual Order Order { get; set; }
+
         public virtual Product Product { get; set; }
+        public virtual User User { get; set; }
     }
 }
