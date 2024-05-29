@@ -1,6 +1,6 @@
-﻿using Beadando.Data;
-using Beadando.Model;
-using Beadando.Repository;
+﻿using MoldovanMilanBeadando.Data;
+using MoldovanMilanBeadando.Model;
+using MoldovanMilanBeadando.Repository;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Windows;
 using System.Windows.Documents;
 using System.Windows.Media.Imaging;
 
-namespace Beadando.View.AdminView
+namespace MoldovanMilanBeadando.View.AdminView
 {
     /// <summary>
     /// Interaction logic for EditProductWindow.xaml

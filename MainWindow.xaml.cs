@@ -1,11 +1,11 @@
-﻿using Beadando.Data;
-using Beadando.Functions;
-using Beadando.View;
+﻿using MoldovanMilanBeadando.Data;
+using MoldovanMilanBeadando.Functions;
+using MoldovanMilanBeadando.View;
 using System;
 using System.Windows;
 using System.Windows.Input;
 
-namespace Beadando
+namespace MoldovanMilanBeadando
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

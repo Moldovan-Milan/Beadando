@@ -1,10 +1,10 @@
-﻿using Beadando.Data;
-using Beadando.Model;
+﻿using MoldovanMilanBeadando.Data;
+using MoldovanMilanBeadando.Model;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Input;
 
-namespace Beadando.View
+namespace MoldovanMilanBeadando.View
 {
     /// <summary>
     /// Interaction logic for ProductWindow.xaml

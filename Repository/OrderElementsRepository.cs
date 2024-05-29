@@ -1,10 +1,10 @@
-﻿using Beadando.Data;
-using Beadando.Model;
+﻿using MoldovanMilanBeadando.Data;
+using MoldovanMilanBeadando.Model;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Beadando.Repository
+namespace MoldovanMilanBeadando.Repository
 {
     class OrderElementsRepository
     {

@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace Beadando
+namespace MoldovanMilanBeadando
 {
     /// <summary>
     /// Interaction logic for App.xaml

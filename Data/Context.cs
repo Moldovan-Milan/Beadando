@@ -1,7 +1,7 @@
-﻿using Beadando.Model;
+﻿using MoldovanMilanBeadando.Model;
 using Microsoft.EntityFrameworkCore;
 
-namespace Beadando.Data
+namespace MoldovanMilanBeadando.Data
 {
     internal class Context : DbContext
     {

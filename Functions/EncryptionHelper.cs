@@ -3,7 +3,7 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace Beadando.Functions
+namespace MoldovanMilanBeadando.Functions
 {
     // Forrás: https://stackoverflow.com/questions/10168240/encrypting-decrypting-a-string-in-c-sharp
     public static class EncryptionHelper

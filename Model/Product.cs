@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Beadando.Model
+namespace MoldovanMilanBeadando.Model
 {
     [Table("product")]
     public class Product

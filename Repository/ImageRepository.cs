@@ -1,10 +1,10 @@
-﻿using Beadando.Data;
-using Beadando.Model;
+﻿using MoldovanMilanBeadando.Data;
+using MoldovanMilanBeadando.Model;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 
-namespace Beadando.Repository
+namespace MoldovanMilanBeadando.Repository
 {
     internal class ImageRepository
     {

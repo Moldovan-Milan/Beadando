@@ -1,7 +1,7 @@
-﻿using Beadando.Repository;
+﻿using MoldovanMilanBeadando.Repository;
 using System.Configuration;
 
-namespace Beadando.Data
+namespace MoldovanMilanBeadando.Data
 {
     static class GlobalVariables
     {

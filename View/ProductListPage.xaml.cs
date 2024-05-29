@@ -1,9 +1,9 @@
-﻿using Beadando.Data;
-using Beadando.Model;
+﻿using MoldovanMilanBeadando.Data;
+using MoldovanMilanBeadando.Model;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace Beadando.View
+namespace MoldovanMilanBeadando.View
 {
     /// <summary>
     /// Interaction logic for ProductPage.xaml

@@ -1,10 +1,10 @@
-﻿using Beadando.Data;
-using Beadando.Model;
-using Beadando.Repository;
+﻿using MoldovanMilanBeadando.Data;
+using MoldovanMilanBeadando.Model;
+using MoldovanMilanBeadando.Repository;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace Beadando.View
+namespace MoldovanMilanBeadando.View
 {
     /// <summary>
     /// Interaction logic for CartPage.xaml

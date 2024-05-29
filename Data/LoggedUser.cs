@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Beadando.Data
+namespace MoldovanMilanBeadando.Data
 {
     public static class LoggedUser
     {

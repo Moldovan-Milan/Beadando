@@ -1,10 +1,10 @@
-﻿using Beadando.Data;
-using Beadando.Functions;
-using Beadando.Model;
+﻿using MoldovanMilanBeadando.Data;
+using MoldovanMilanBeadando.Functions;
+using MoldovanMilanBeadando.Model;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace Beadando.View
+namespace MoldovanMilanBeadando.View
 {
     /// <summary>
     /// Interaction logic for OrderWindow.xaml

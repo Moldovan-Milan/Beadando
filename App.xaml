@@ -1,7 +1,7 @@
-﻿<Application x:Class="Beadando.App"
+﻿<Application x:Class="MoldovanMilanBeadando.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:Beadando"
+             xmlns:local="clr-namespace:MoldovanMilanBeadando"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>

@@ -1,12 +1,12 @@
-﻿using Beadando.Data;
-using Beadando.Model;
-using Beadando.Repository;
+﻿using MoldovanMilanBeadando.Data;
+using MoldovanMilanBeadando.Model;
+using MoldovanMilanBeadando.Repository;
 using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace Beadando.Functions
+namespace MoldovanMilanBeadando.Functions
 {
     public static class MakeOrder
     {

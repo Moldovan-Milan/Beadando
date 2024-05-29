@@ -1,8 +1,8 @@
-﻿using Beadando.Data;
-using Beadando.Model;
+﻿using MoldovanMilanBeadando.Data;
+using MoldovanMilanBeadando.Model;
 using System.Windows;
 
-namespace Beadando.View
+namespace MoldovanMilanBeadando.View
 {
     /// <summary>
     /// Interaction logic for ProductionWindow.xaml

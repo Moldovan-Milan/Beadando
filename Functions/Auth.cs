@@ -1,9 +1,9 @@
-﻿using Beadando.Data;
-using Beadando.Model;
-using Beadando.Repository;
+﻿using MoldovanMilanBeadando.Data;
+using MoldovanMilanBeadando.Model;
+using MoldovanMilanBeadando.Repository;
 using System;
 
-namespace Beadando.Functions
+namespace MoldovanMilanBeadando.Functions
 {
     static class Auth
     {
@@ -26,6 +26,7 @@ namespace Beadando.Functions
             EmailAlreadyExist = 2,
             PasswordLenghtToSmall = 3,
             PasswordsNotMacthes = 4,
+            EmailNotValid = 5
         }
 
         public static LoginResults Login(string username, string password)
@@ -70,6 +71,10 @@ namespace Beadando.Functions
                 // Jelszó ellenőrzése
                 if (password.Length < 3) { return RegistrationResults.PasswordLenghtToSmall; }
                 if (password != passwordAgain) { return RegistrationResults.PasswordsNotMacthes; }
+
+                // email megadásának ellenőrzése
+                if (email.Length < 5) 
+                { return RegistrationResults.EmailNotValid; }
 
                 // User regisztrálása, ha minden jó
                 userRepository.AddUser(new User

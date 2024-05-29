@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Beadando.Model
+namespace MoldovanMilanBeadando.Model
 {
     internal class ViewModel
     {

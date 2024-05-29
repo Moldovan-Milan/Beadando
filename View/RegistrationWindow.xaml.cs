@@ -1,8 +1,8 @@
-﻿using Beadando.Functions;
+﻿using MoldovanMilanBeadando.Functions;
 using System.Windows;
 using System.Windows.Input;
 
-namespace Beadando.View
+namespace MoldovanMilanBeadando.View
 {
     /// <summary>
     /// Interaction logic for RegistrationWindow.xaml
@@ -17,6 +17,7 @@ namespace Beadando.View
             EmailAlreadyExist = 2,
             PasswordLenghtToSmall = 3,
             PasswordsNotMacthes = 4,
+            EmailNotValid = 5
         }
 
         public RegistrationWindow()
@@ -37,6 +38,7 @@ namespace Beadando.View
             email_error.Visibility = Visibility.Collapsed;
             password_length_error.Visibility = Visibility.Collapsed;
             password_length_error.Visibility = Visibility.Collapsed;
+            email_not_valid.Visibility = Visibility.Collapsed;
         }
 
         private void registration_btn_Click(object sender, RoutedEventArgs e)
@@ -60,6 +62,8 @@ namespace Beadando.View
             { password_length_error.Visibility = Visibility.Visible; }
             else if (result == RegistrationResults.PasswordsNotMacthes)
             { password_check_error.Visibility = Visibility.Visible; }
+            else if (result == RegistrationResults.EmailNotValid)
+            { email_not_valid.Visibility = Visibility.Visible; }
             else if (result == RegistrationResults.Failed)
             { MessageBox.Show("Sikertelen regisztráció!"); }
         }
